@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import UserList from "./components/user";
 import ProjectList from "./components/projects";
+import ProjectTodoList from "./components/projectTodo";
 import TodoList from "./components/todo";
 import axios from "axios";
 import {HashRouter, Route, Switch, Redirect} from 'react-router-dom'
@@ -60,9 +60,12 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path='/' component={() => <UserList users={this.state.users}/>}/>
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
-                        <Route exact path='/todo' component={() => <TodoList todos={this.state.todos}/>}/>
-                        <Route component={Page404} />
+                        <Route exact path='/todo' component={() => <TodoList todos={this.state.todos} users={this.state.users}/>}/>
+                        <Route exact path='/project/:id'>
+                           <ProjectTodoList todos={this.state.todos}/>
+                        </Route>
                         <Redirect from='/users' to='/' />
+                        <Route component={Page404} />
                     </Switch>
 
                 </HashRouter>
