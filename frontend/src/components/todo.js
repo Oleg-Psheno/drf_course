@@ -13,9 +13,9 @@ const TodoItem = ({todo, users}) => {
                 {todo.project}
             </td>
             <td>
-                {/*{users.find((user) => user.id==todo.author.username}*/}
+                {users.find((user) => user.id===todo.author).username}
 
-                {todo.author}
+                {/*{todo.author}*/}
             </td>
         </tr>
     )
