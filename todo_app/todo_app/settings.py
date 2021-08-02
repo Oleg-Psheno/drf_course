@@ -59,8 +59,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'todo_app.urls'
-# from rest_framework.permissions import DjangoModelPermissions
-from rest_framework.authentication import BasicAuthentication,SessionAuthentication,TokenAuthentication
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE':5,
