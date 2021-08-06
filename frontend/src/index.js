@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Link,HashRouter} from 'react-router-dom'
 
 ReactDOM.render(
     <React.StrictMode>
@@ -13,7 +14,18 @@ ReactDOM.render(
 
 class Menu extends React.Component {
     render() {
-        return (<h1>Меню</h1>)
+        return (
+            <nav>
+                <ul>
+                    <HashRouter>
+                        <li><Link to='/'>Users</Link></li>
+                        <li><Link to='/projects'>Projects</Link></li>
+                        <li><Link to='/todo'>Todo</Link></li>
+                    </HashRouter>
+
+                </ul>
+            </nav>
+        )
     }
 }
 
