@@ -1,4 +1,5 @@
 from django.urls import include
+
 """todo_app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,6 +20,7 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 from users.views import UserViewSet
 from tasks.views import ProjectsViewSet, TodoViewSet
+from rest_framework.authtoken.views import obtain_auth_token
 
 router = DefaultRouter()
 router.register('users', UserViewSet)
@@ -27,5 +29,7 @@ router.register('todo', TodoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', obtain_auth_token),
 ]

@@ -4,24 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
     <React.StrictMode>
         <App/>
     </React.StrictMode>,
     document.getElementById('root')
-);
-
-class Menu extends React.Component {
-    render() {
-        return (<h1>Меню</h1>)
-    }
-}
-
-ReactDOM.render(
-    <React.StrictMode>
-        <Menu/>
-    </React.StrictMode>,
-    document.getElementById('menu')
 );
 
 class Footer extends React.Component {
