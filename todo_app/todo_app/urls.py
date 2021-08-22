@@ -21,16 +21,29 @@ from rest_framework.routers import DefaultRouter
 from users.views import UserViewSet
 from tasks.views import ProjectsViewSet, TodoViewSet
 from rest_framework.authtoken.views import obtain_auth_token
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework.permissions import AllowAny
 
 router = DefaultRouter()
 router.register('users', UserViewSet)
 router.register('projects', ProjectsViewSet)
 router.register('todo', TodoViewSet)
 
+schema_view = get_schema_view(
+    openapi.Info(
+        title='todo_app',
+        default_version='v1',
+        description='todo application'
+    ),
+    public=True,
+    permission_classes=(AllowAny,)
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('api-token-auth/', obtain_auth_token),
-
+    path('swagger/', schema_view.with_ui('swagger'))
 ]
