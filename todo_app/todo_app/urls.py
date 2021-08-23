@@ -25,6 +25,7 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework.permissions import AllowAny
 from graphene_django.views import GraphQLView
+from django.views.generic import TemplateView
 
 router = DefaultRouter()
 router.register('users', UserViewSet)
@@ -48,4 +49,5 @@ urlpatterns = [
     path('api-token-auth/', obtain_auth_token),
     path('swagger/', schema_view.with_ui('swagger')),
     path('graphql/', GraphQLView.as_view(graphiql=True)),
+    path('',TemplateView.as_view(template_name='index.html'))
 ]
