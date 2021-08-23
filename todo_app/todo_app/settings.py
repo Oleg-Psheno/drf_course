@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'tasks',
     'corsheaders',
     'drf_yasg',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'todo_app.urls'
+
+GRAPHENE = {
+    'SCHEMA': 'users.schema.schema'
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

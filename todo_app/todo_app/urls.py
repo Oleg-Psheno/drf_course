@@ -24,6 +24,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework.permissions import AllowAny
+from graphene_django.views import GraphQLView
 
 router = DefaultRouter()
 router.register('users', UserViewSet)
@@ -45,5 +46,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('api-token-auth/', obtain_auth_token),
-    path('swagger/', schema_view.with_ui('swagger'))
+    path('swagger/', schema_view.with_ui('swagger')),
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
